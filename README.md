@@ -1,2 +1,27 @@
-# DLS_Face_Recognition
-Developing face recognition system
+# Face Recognition Project for DLS
+
+## Общее описание.
+В данном проекте рассматривается задача распознавания лиц. Как правило, данная задача состоит из трех элементов: детекция лица (face detection);
+выравнивание лица (face alignment); распознавания лица (face recognition).
+
+## Постановка задачи.
+Постановка задачи заключается в том, что мы хотим разработать систему распознавания лиц, чтобы применять ее в нашем офисе. 
+Например, чтобы сотрудники могли сканировать лицо вместо прикладывания id карточек к турникетам при входе. Или для обеспечения безопасности в офисах.
+
+Получается, нам нужна система, которая может принимать на вход видео, полученное с камер наблюдения, и на выходе выдавать, что за люди были замечены на этом видео. 
+Наша система должна уметь работать в случаях, когда лица людей запечатлены крупным или мелким планом, когда они чуть повернуты или наклонены, и когда на одном кадре с камеры находятся несколько лиц людей.
+
+## Описание реализации задачи.
+Код задачи разбит на несколько частей, согласно заданиям, для удобства реализации и проверки:
+
+1) [1_Dataset_preparation.ipynb](1_Dataset_preparation.ipynb) - реализовывает задачи отбора и подготовки тренировочного, валидационного и тестового (для метрики Identification Rate Metric) датасетов;
+2) [2_Alignment.ipynb](2_Alignment.ipynb) или в [Google Colab](https://colab.research.google.com/drive/1D3liVTeodtiOjvz1IFuOIrWJJolWsni0?usp=sharing) - реализована задача нахождения ключевых точек на лице с помощью нейросети Stacked Hourglass Network и выравнивание фотографий лиц по найденным ключевым точкам с помощью аффинного преобразования из модуля opencv;
+3) [3_Recognition.ipynb](3_Recognition.ipynb) или в [Google Colab](https://colab.research.google.com/drive/12uxHspw6pckFUgoHn9zaLBmrslH9Gy_R?usp=sharing) - реализована задача распознавания лиц с помощью CNN сети (_EfficientNet B3_) в качестве Backbone и двух лоссов (CrossEntropy и ArcFaceLoss) для сравнения результатов.
+4) [4_Pipeline.ipynb](4_Pipeline.ipynb) или в [Google Colab](https://colab.research.google.com/drive/1eYGba4LIvCYWjYEcqqwAeDU3fnS_LAfW?usp=sharing) - реализован полный пайплайн по системе распознавания лиц, от детекции лица на переданной фотографии, нахождение ключевых точек, выравнивания лица и получение эмбеддингов лиц для дальнейшего сравнения с "эталонным" лицом для узнавания.
+5) [5_IRM.ipynb](5_IRM.ipynb) или в [Google Colab](https://colab.research.google.com/drive/1zCLJQryqYP9LV4dWFo5OVkG3AhocE70D?usp=sharing) - 1ое дополнительное задание по оценке модели по Identification Rate Metric.
+
+## Ресурсы репозитория.
+1) [test_pic.jpg](test_pic.jpg) - тестовая картинка для демонстрации работы пайплайна
+2) Директория ["sample_persons/faces"](sample_persons/faces) - директория с "эталонным" лицами для поиска на картинке
+3) Директория ["src"](src) - директория с кодом для импорта в пайплайне [4_Pipeline.ipynb](4_Pipeline.ipynb)
+4) [Я.Диск](https://disk.yandex.ru/d/bhR7mvA_jrpPvQ) - папка проекта на Яндекс.Диске с кодом, датасетом и весами моделей.
