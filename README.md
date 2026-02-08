@@ -25,3 +25,6 @@
 2) Директория ["sample_persons/faces"](sample_persons/faces) - директория с "эталонным" лицами для поиска на картинке
 3) Директория ["src"](src) - директория с кодом для импорта в пайплайне [4_Pipeline.ipynb](4_Pipeline.ipynb)
 4) [Я.Диск](https://disk.yandex.ru/d/bhR7mvA_jrpPvQ) - папка проекта на Яндекс.Диске с кодом, датасетом и весами моделей.
+
+## Контакты:
+Telegram: @Lexus_cdb
